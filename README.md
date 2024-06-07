@@ -10,6 +10,6 @@ Preprocessing and QC steps for DNAm arrayed with EPIC v2 for IMAGEN, STRATIFY an
 3. Quantile-norm.rda # This file contains data that have been processed with quantile normalization.
 4. fast_svd.rda # This file contains results from a fast singular value decomposition (SVD) analysis, which is performed to identify and correct for batch effects or other confounding variables.
 5. cellcount.rda # This file contains estimated cell-type proportions for each sample.
-and all QC plots (see details from pre
+and all QC plots (see details from Preprocess and QC for DNAm data.R)
 
 * For case-control cohorts, Fun-norm.rda (preprocess using preprocessFunnorm) is also provided. 
