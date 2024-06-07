@@ -6,6 +6,8 @@ library(IlluminaHumanMethylationEPICanno.ilm10b4.hg19)
 library(IlluminaHumanMethylationEPICv2anno.20a1.hg38)
 library(IlluminaHumanMethylationEPICv2manifest)
 library(FlowSorted.Blood.EPIC)
+library(reshape2)
+library(ggplot2)
 
 # Load RGset and annotate the methylation array data
 RGset = read.metharray.exp(workdir,recursive = TRUE)
@@ -30,3 +32,17 @@ propEPIC <- projectCellType_CP(
     contrastWBC = NULL, nonnegative = TRUE,
     lessThanOne = FALSE
 )
+
+# Plot the proportion of each cell type
+cellcount <- data.frame(cbind(rownames(propEPIC), propEPIC))
+cellcount[c(2:7)] <- lapply(cellcount[c(2:7)], as.numeric)
+names(cellcount) <- c("ID", "CD8T","CD4T","NK","Bcell","Mono","Neu")
+data_melt <- melt(cellcount, id.vars = "ID")
+
+p <- ggplot(data_melt, aes(x = variable, y = value)) +
+geom_boxplot(fill = "gray") +
+labs(x = "Cell Types", 
+     y = "Proportion") +
+  theme_minimal()
+
+print(p)
