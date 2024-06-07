@@ -37,7 +37,7 @@ propEPIC <- projectCellType_CP(
 # Plot the proportion of each cell type
 cellcount <- data.frame(cbind(rownames(propEPIC), propEPIC))
 cellcount[c(2:7)] <- lapply(cellcount[c(2:7)], as.numeric)
-names(cellcount) <- c("ID", "CD8T","CD4T","NK","Bcell","Mono","Neu")
+names(cellcount) <- c("ID", "CD8T", "CD4T", "NK", "Bcell", "Mono", "Neu")
 data_melt <- melt(cellcount, id.vars = "ID")
 
 p <- ggplot(data_melt, aes(x = variable, y = value)) +
