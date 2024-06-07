@@ -44,5 +44,4 @@ geom_boxplot(fill = "gray") +
 labs(x = "Cell Types", 
      y = "Proportion") +
   theme_minimal()
-
 print(p)
