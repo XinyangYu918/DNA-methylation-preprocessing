@@ -1,2 +1,2 @@
 # DNA-methylation-preprocessing
-preprocessing and QC steps for DNAm arrayed with EPIC v2
+Preprocessing and QC steps for DNAm arrayed with EPIC v2 for IMAGEN, STRATIFY and ESTRA cohorts.
