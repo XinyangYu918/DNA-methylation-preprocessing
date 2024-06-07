@@ -29,7 +29,8 @@ identical(rownames(IDOLOptimizedCpGs.compTable[IDOLOptimizedCpGsBloodv2,]), IDOL
 propEPIC <- projectCellType_CP(
     Betas[IDOLOptimizedCpGsBloodv2, ],
     IDOLOptimizedCpGs.compTable[IDOLOptimizedCpGsBloodv2,],
-    contrastWBC = NULL, nonnegative = TRUE,
+    contrastWBC = NULL, 
+    nonnegative = TRUE,
     lessThanOne = FALSE
 )
 
