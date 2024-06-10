@@ -1,4 +1,4 @@
-# The following was downloaded from: https://github.com/immunomethylomics/FlowSorted.Blood.EPIC/issues/10
+# The following was downloaded and adapted from: https://github.com/immunomethylomics/FlowSorted.Blood.EPIC/issues/10
 #### To estimate the counts of cell types for methylation data arrayed with EPIC V2 platform ####
 library(minfi)
 library(sesame)
