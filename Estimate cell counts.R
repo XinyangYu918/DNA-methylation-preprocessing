@@ -48,11 +48,11 @@ labs(x = "Cell Types",
   theme_minimal()
 print(p)
 
-# Perform PCA of cell count proporation
+# Perform PCA of cell count proportion
 pca_result <- prcomp(cellcount[2:7])  
 variance_explained <- pca_result$sdev^2 / sum(pca_result$sdev^2)
 
-# Create a data frame for PCA plots
+# Create a data frame for PCA plotting
 scree_data <- data.frame(
   Principal_Component = 1:length(variance_explained),
   Variance_Explained = variance_explained)
