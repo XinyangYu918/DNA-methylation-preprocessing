@@ -10,7 +10,8 @@ library(reshape2)
 library(ggplot2)
 
 # Load RGset and annotate the methylation array data
-RGset = read.metharray.exp(workdir,recursive = TRUE)
+#RGset = read.metharray.exp(workdir,recursive = TRUE)
+load("./RGset_QCed.rda")
 annotation(RGset)["array"] = "IlluminaHumanMethylationEPICv2"
 annotation(RGset)["annotation"] = "20a1.hg38"
 
