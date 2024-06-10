@@ -180,3 +180,13 @@ beta <- beta[keepIndex, ]
 
 # Save beta values of the quantile normalised data
 save(beta, file="./Beta_Quantile.rda")
+
+#### Perform preprocessFunnorm, for case-control cohorts (i.e., STRATIFY and ESTRA cohorts) only ####
+# For detailed comparisons between different normalisation methods, see: https://nbis-workshop-epigenomics.readthedocs.io/en/latest/content/tutorials/methylationArray/Array_Tutorial.html#preprocessfunnorm
+#load("./RGset_QCed.rda")
+#RGset@annotation[["annotation"]] <- "20a1.hg38"
+#RGset@annotation[["array"]] <- "IlluminaHumanMethylationEPICv2"
+object <- preprocessFunnorm(RGset)
+save(object, file="./Fun-norm.rda") 
+ 
+
