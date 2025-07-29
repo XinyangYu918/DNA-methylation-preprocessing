@@ -6,7 +6,8 @@ This repository contains preprocessing and quality control (QC) workflows for DN
 
 ## Workflow Overview
 Preprocessing and QC are performed using the [`minfi`](https://bioconductor.org/packages/release/bioc/html/minfi.html) package. 
-The overall workflow includes raw data import, normalisation, batch correction, cell type deconvolution, and quality control.
+The overall workflow includes raw data import, normalisation, batch correction, cell type deconvolution, and quality control. See full implementation in this script:  
+[`Preprocess and QC for DNAm data.R`](https://github.com/XinyangYu918/DNA-methylation-preprocessing/blob/main/Preprocess%20and%20QC%20for%20DNAm%20data.R)
 
 <img src="https://github.com/XinyangYu918/DNA-methylation-preprocessing/assets/52769576/bfac942c-14d8-4a95-98a1-127ad3d1dd73" alt="Workflow Image" width="400"/>
 
