@@ -1,15 +1,55 @@
-# DNA-methylation-preprocessing
-Preprocessing and QC steps for DNAm arrayed with EPIC v2 for IMAGEN, STRATIFY and ESTRA cohorts.
+# DNA Methylation Preprocessing
 
-## Workflow of minfi package and different outputs
+This repository contains preprocessing and quality control (QC) workflows for DNA methylation (DNAm) data arrayed using the **Illumina EPIC v2 array**. The data were derived from the **IMAGEN**, **STRATIFY**, and **ESTRA** cohorts.
+
+---
+
+## Workflow Overview
+Preprocessing and QC are performed using the [`minfi`](https://bioconductor.org/packages/release/bioc/html/minfi.html) package. 
+The overall workflow includes raw data import, normalisation, batch correction, cell type deconvolution, and quality control.
+
 <img src="https://github.com/XinyangYu918/DNA-methylation-preprocessing/assets/52769576/bfac942c-14d8-4a95-98a1-127ad3d1dd73" alt="Workflow Image" width="400"/>
 
-## Outputs from preprocessing and QC
-1. RGset.rda # This file contains raw intensity data (both methylated and unmethylated signals) from the microarray before any preprocessing or normalization steps.
-2. beta_Quantile.rda # This file contains beta values that have undergone quantile normalization.
-3. Quantile-norm.rda # This file contains data that have been processed with quantile normalization.
-4. fast_svd.rda # This file contains results from a fast singular value decomposition (SVD) analysis, which is performed to identify and correct for batch effects or other confounding variables.
-5. cellcount.rda # This file contains estimated cell-type proportions for each sample.
-and all QC plots (see details from Preprocess and QC for DNAm data.R)
+---
 
-* For case-control cohorts, Fun-norm.rda (preprocess using preprocessFunnorm) is also provided. 
+## Output Files
+| File | Description |
+|------|-------------|
+| `RGset.rda` | Raw intensity data (methylated and unmethylated signals) prior to normalisation or preprocessing. |
+| `beta_Quantile.rda` | Beta values obtained after quantile normalisation. |
+| `Quantile-norm.rda` | Quantile-normalised intensity data. |
+| `fast_svd.rda` | Results from fast singular value decomposition (SVD), used to detect and adjust for batch effects or confounding factors. |
+| `cellcount.rda` | Estimated cell-type proportions per sample. |
+
+**QC plots** are included. For documentation, see:  
+- [`Methylation QC protocol_21062024.docx`](./Methylation%20QC%20protocol_21062024.docx)  
+- [`Methylation QC_07062024.pptx`](./Methylation%20QC_07062024.pptx)
+
+---
+
+## Additional Probe-Level QC (Recommended)
+Additional QC procedures are described in [`More QC option.R`](./More%20QC%20option.R), including:
+
+1. **SNP-based probe filtering**  
+   - Remove probes with SNPs at CpG, single base extension (SBE), or probe body (`MAF > 0.05`)
+
+2. **Detection p-value filtering**  
+   - Remove probes with detection p-values > 0.01  
+   - Exclude probes failing in >20% of samples
+
+3. **Non-variable CpG filtering**  
+   - Remove probes with invariant methylation (beta ≤ 0.2 or ≥ 0.8 in all samples)
+
+4. **Sex chromosome probe removal**  
+   - Exclude probes on chrX and chrY
+
+5. **Missing value handling**  
+   - Set failed probes to `NA` in the beta matrix  
+   - Retain only high-confidence probes in downstream analysis
+
+---
+
+## Probe Filtering Resources
+To remove cross-reactive and polymorphic probes from your analysis, refer to:  
+[https://github.com/markgene/maxprobes](https://github.com/markgene/maxprobes)
+
